@@ -43,11 +43,11 @@ const Filter = () => {
 							bgColor="transparent"
 							border="1px solid #525252 "
 							borderRadius="7px"
-							bgColor={darkMode ? '#6B7280' : 'transparent'}
+							// bgColor={darkMode ? '#6B7280' : 'transparent'}
 							bgcolorHover="rgb(241 239 240)"
 						/>
 						<ButtonComponent
-							description={<img src={imgicon} style={{ width: '15px', height: '15px' }} />}
+							description={<img src={imgicon} alt="Img" style={{ width: '15px', height: '15px' }} />}
 							padding="3px 1px"
 							margin="0px 7px"
 							width="40px"
@@ -55,7 +55,7 @@ const Filter = () => {
 							bgColor="transparent"
 							border="1px solid #525252 "
 							borderRadius="7px"
-							bgColor={darkMode ? '#6B7280' : 'transparent'}
+							// bgColor={darkMode ? '#6B7280' : 'transparent'}
 							bgcolorHover="rgb(241 239 240)"
 						/>
 					</div>
@@ -77,7 +77,7 @@ const Filter = () => {
 							margin="0px 7px"
 							color="#FFFFFF"
 							width="60px"
-							bgColor="transparent"
+							// bgColor="transparent"
 							border="1px solid #525252 "
 							borderRadius="7px"
 							bgColor={darkMode ? '#6B7280' : '#BE185D'}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -7,13 +7,13 @@ import { useStyles } from './Styles';
 import TraitLinks from './TraitContent';
 
 const Traits = (props) => {
-	const [ contentItems, setContentItems ] = useState(TraitLinks);
+	// const [ contentItems, setContentItems ] = useState(TraitLinks);
 
-	const styles = {
-		root: {
-			minWidth: '0px'
-		}
-	};
+	// const styles = {
+	// 	root: {
+	// 		minWidth: '0px'
+	// 	}
+	// };
 	const classes = useStyles();
 	return (
 		<div>
@@ -38,7 +38,3 @@ const Traits = (props) => {
 	);
 };
 export default Traits;
-{
-	/* <span>▷</span>
-▽ */
-}

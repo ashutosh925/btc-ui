@@ -23,9 +23,7 @@ const IndexSelect = () => {
 		}
 	];
 	const classes = useStyles();
-	{
-		darkMode ? '#374151' : 'white';
-	}
+	
 	return (
 		<div>
 			<FormControl className={classes.formControl} style={{ background: 'red' }}>

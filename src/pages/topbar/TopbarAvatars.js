@@ -6,7 +6,7 @@ import topbarGif2 from '../../assets/topbarGif2.gif';
 import topbarGif3 from '../../assets/topicon2.png';
 import listLogo from '../../assets/svg-gobbler.svg';
 import Hidden from '@material-ui/core/Hidden';
-import withWidth from '@material-ui/core/withWidth';
+// import withWidth from '@material-ui/core/withWidth';
 const Avatars = () => {
 	const classes = useStyles();
 

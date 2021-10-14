@@ -4,7 +4,7 @@ import ButtonComponent from '../../components/Button';
 import { ThemeContext } from '../../ThemeContext';
 
 const Ranking = () => {
-	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
+	const { 0: darkMode } = useContext(ThemeContext);
 
 	const classes = useStyles();
 	return (

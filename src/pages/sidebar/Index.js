@@ -3,11 +3,11 @@ import { useStyles } from './Styles';
 import SelectDropDown from './IndexSelect';
 import ButtonComponent from '../../components/Button';
 import InputComponent from '../../components/Input';
-import ItemFilter from './IndexItemFilter';
-import Price from './IndexPrice';
-import IndexTraitFilter from './IndexTraitFilter';
-import Traits from './IndexTraits';
-import Paper from '@material-ui/core/Paper';
+// import ItemFilter from './IndexItemFilter';
+// import Price from './IndexPrice';
+// import IndexTraitFilter from './IndexTraitFilter';
+// import Traits from './IndexTraits';
+// import Paper from '@material-ui/core/Paper';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Typography } from '@material-ui/core';
@@ -16,7 +16,7 @@ import Hidden from '@material-ui/core/Hidden';
 import { HideContentMd } from './HideContentMd';
 const Sidebar = (props) => {
 	const [ showFilters, setFilters ] = useState(false);
-	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
+	const { 0: darkMode } = useContext(ThemeContext);
 	const classes = useStyles(props);
 	const themeLight = createTheme({
 		palette: {

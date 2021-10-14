@@ -22,7 +22,7 @@ const IndexItemFilter = (props) => {
 						width="80px"
 						margin="0px 7px"
 						color={darkMode ? '#FFFFFF' : '#BE185D'}
-						bgColor="transparent"
+						// bgColor="transparent"
 						border="1px solid #525252 "
 						borderRadius="7px"
 						bgColor={darkMode ? '#6B7280' : 'transparent'}
@@ -30,7 +30,7 @@ const IndexItemFilter = (props) => {
 					/>
 					<ButtonComponent
 						description="Auction"
-						bgColor="#BE185D"
+						// bgColor="#BE185D"
 						padding="1px 4px"
 						margin="0px 7px"
 						width="80px"

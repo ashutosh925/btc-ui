@@ -6,7 +6,7 @@ import { ThemeContext } from '../../ThemeContext';
 
 import Price from './IndexPrice';
 export const HideContentMd = () => {
-	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
+	const { 0: darkMode } = useContext(ThemeContext);
 
 	return (
 		<div>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useStyles } from './Styles';
 import mainbanner from '../../assets/main-banner.jpg';
 import { Grid } from '@material-ui/core';
@@ -8,12 +8,12 @@ import ButtonComponent from '../../components/Button';
 import IndexWarning from './IndexWarning';
 import Ranking from './IndexRanking';
 import Filter from './IndexFilter';
-import { ThemeContext } from '../../ThemeContext';
+// import { ThemeContext } from '../../ThemeContext';
 import Collection from '../project-collection/Index';
 import NewsCollections from '../newest-collection/Index';
 import TopCollection from '../topcollection/Index';
 const ProjectDescription = () => {
-	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
+	// const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
 
 	const classes = useStyles();
 	const adImg = 'https://current.images.rarity.tools/samuraidoge_horiz_d';
@@ -65,7 +65,7 @@ const ProjectDescription = () => {
 									borderRadius="8px"
 									color="#DB2777"
 									bgColor="transparent"
-									border="none"
+									// border="none"
 									margin="0px 5px"
 									border=" 1px solid #DB2777"
 									height="45px"
@@ -80,7 +80,7 @@ const ProjectDescription = () => {
 									bgColor="transparent"
 									border=" 1px solid #DB2777"
 									height="45px"
-									bgcolorHover="rgb(241 239 240)"
+									// bgcolorHover="rgb(241 239 240)"
 								/>
 							</div>
 						</Grid>
