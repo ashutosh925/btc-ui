@@ -6,7 +6,10 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		height: '40px',
-		backgroundColor: '#1F2937'
+		backgroundColor: '#1F2937',
+		[theme.breakpoints.down('500')]: {
+			height: '50px'
+		}
 	},
 	buttonText: {
 		fontWeight: 900,

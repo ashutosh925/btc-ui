@@ -4,6 +4,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	singleContentRoot: (props) => ({
 		padding: '5px',
 		borderRadius: '5px',
+		marginBottom: '70px',
 		border: '1px solid #d4d4d4',
 		boxShadow: '0px 0px 7px -3px rgba(0,0,0,0.34)'
 	}),

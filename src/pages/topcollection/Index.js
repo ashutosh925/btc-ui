@@ -22,6 +22,10 @@ const TopCollection = () => {
 					<SingleContent topHeading="Top by Owner Count" />
 				</Grid>
 			</Grid>
+
+			<h5 style={{ color: '#DB2777', fontSize: '16px', textAlign: 'center' }}>
+				Terms of Use - Powered by OpenSea
+			</h5>
 		</div>
 	);
 };

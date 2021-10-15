@@ -18,7 +18,9 @@ const Container = () => {
 
 			<Grid container direction="row" justifyContent="center">
 				<Grid item sm={12} md={12} lg={10} xl={10}>
-					<ProjectDescription />
+					<div className="parent-mid">
+						<ProjectDescription />
+					</div>
 				</Grid>
 			</Grid>
 		</div>

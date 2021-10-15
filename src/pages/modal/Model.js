@@ -32,18 +32,7 @@ const useStyles = makeStyles((theme) => ({
 		border: '3px solid #DB2777',
 		outline: 'none',
 		borderRadius: '7px',
-		padding: theme.spacing(3, 4, 3),
-		'&::-webkit-scrollbar': {
-			width: '0.4em'
-		},
-		'&::-webkit-scrollbar-track': {
-			boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-			webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
-		},
-		'&::-webkit-scrollbar-thumb': {
-			backgroundColor: 'rgba(0,0,0,.1)',
-			outline: '1px solid slategrey'
-		}
+		padding: theme.spacing(3, 4, 3)
 	}
 }));
 

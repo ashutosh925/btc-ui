@@ -21,7 +21,7 @@ const TopBar = () => {
 		<div className={classes.root}>
 			<AppBar className={classes.appBar} position="fixed">
 				<Grid container className={classes.gridParent} alignItems="center">
-					<Grid item md={3} lg={2}>
+					<Grid item sm={3} lg={2}>
 						<div className="d-flex w-100 align-items-center justify-content-evenly">
 							<ButtonComponent
 								description={<span className={classes.buttonText}>raritry.tools</span>}
@@ -44,10 +44,10 @@ const TopBar = () => {
 							</a>
 						</div>
 					</Grid>
-					<Grid item lg={6}>
+					<Grid sm={7} lg={6}>
 						<Avatars />
 					</Grid>
-					<Grid item lg={4}>
+					<Grid sm={2} lg={4}>
 						<div className="d-flex justify-content-end">
 							<Hidden only={[ 'xs', 'sm', 'md' ]}>
 								<a href="#" target="_blank" className={classes.rightAhrefLinksFirstBorder}>

@@ -1,3 +1,9 @@
 .MuiSelect-selectMenu {
 	height: 20px !important;
 }
+.mid-root {
+	height: 100vh !important;
+	/* background-color: red !important;
+	z-index: 999 !important;
+	overflow-y: scroll !important; */
+}

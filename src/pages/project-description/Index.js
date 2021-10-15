@@ -16,7 +16,7 @@ const ProjectDescription = () => {
 	const classes = useStyles();
 	const adImg = 'https://current.images.rarity.tools/samuraidoge_horiz_d';
 	return (
-		<div className={classes.root}>
+		<div className={`${classes.root} mid-root`}>
 			<div className={classes.imgParentDiv}>
 				<img src={mainbanner} alt="bannerAlt" className="img-fluid h-75 w-100" />
 				<div className="text-center mt-3 mb-3 ">

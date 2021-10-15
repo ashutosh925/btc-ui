@@ -4,6 +4,21 @@
 	box-sizing: border-box;
 	font-family: 'Source Sans Pro', sans-serif !important;
 }
-html:focus-within {
-	scroll-behavior: smooth;
+
+body {
+	overflow-y: hidden;
+}
+.mid-root {
+	overflow-y: scroll !important;
+}
+.mid-root::-webkit-scrollbar {
+	width: 0; /* Remove scrollbar space */
+}
+@media screen and (max-width: 1030px) {
+	.mid-root {
+		overflow-y: inherit !important;
+	}
+	body {
+		overflow-y: scroll;
+	}
 }

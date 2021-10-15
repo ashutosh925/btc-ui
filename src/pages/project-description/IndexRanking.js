@@ -4,7 +4,7 @@ import ButtonComponent from '../../components/Button';
 import { ThemeContext } from '../../ThemeContext';
 import { Button } from '@material-ui/core';
 import SettingsButtons from './SettingsButtons';
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom';
+
 const Ranking = () => {
 	const classes = useStyles();
 	const [ btnShow, setBtnShow ] = useState(false);
@@ -19,7 +19,7 @@ const Ranking = () => {
 	const showRankingNotes = () => {
 		setRankingNotes(!rankingNotes);
 	};
-	console.log('asdasdsetings', btnShow);
+
 	return (
 		<div>
 			<br />
