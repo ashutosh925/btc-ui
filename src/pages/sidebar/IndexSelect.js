@@ -11,15 +11,15 @@ const IndexSelect = () => {
 	const menuItems = [
 		{
 			listItem: 'ten',
-			value: 10
+			value: 'ten'
 		},
 		{
 			listItem: 'Twenty',
-			value: 20
+			value: 'Twenty'
 		},
 		{
 			listItem: 'Thirty',
-			value: 30
+			value: 'Thirty'
 		}
 	];
 	const classes = useStyles();
@@ -31,9 +31,11 @@ const IndexSelect = () => {
 					{menuItems &&
 						menuItems.map((items, idx) => {
 							return (
-								<MenuItem value={items.value} key={idx}>
-									<span style={{ color: darkMode ? '#9CA3AF' : 'black' }}>{items.listItem}</span>
-								</MenuItem>
+								<div key={idx}>
+									<MenuItem value={items.value}>
+										<span style={{ color: darkMode ? '#9CA3AF' : 'black' }}>{items.listItem}</span>
+									</MenuItem>
+								</div>
 							);
 						})}
 				</Select>
@@ -41,4 +43,4 @@ const IndexSelect = () => {
 		</div>
 	);
 };
-export default IndexSelect;
+export default React.memo(IndexSelect);

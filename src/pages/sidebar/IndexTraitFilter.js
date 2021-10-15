@@ -44,4 +44,4 @@ const IndexTraitFilter = (props) => {
 		</div>
 	);
 };
-export default IndexTraitFilter;
+export default React.memo(IndexTraitFilter);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStyles } from './Styles';
 import Avatar from '@material-ui/core/Avatar';
-// import icon from '../../assets/topicon3.png';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 const InsideContent = (props) => {
@@ -15,7 +14,7 @@ const InsideContent = (props) => {
 						<div className="d-flex ms-1">
 							<Avatar
 								alt="Remy Sharp"
-								variant="circle"
+								variant="circular"
 								src={props.icon}
 								style={{
 									width: '38px',

@@ -13,7 +13,7 @@ const SingleContent = (props) => {
 			{content1 &&
 				content1.map((items, idx) => {
 					return (
-						<div>
+						<div key={idx}>
 							<InsideContent
 								id={idx}
 								icon={items.icon}
@@ -24,8 +24,6 @@ const SingleContent = (props) => {
 						</div>
 					);
 				})}
-			{/* <InsideContent /> */}
-			{/* <InsideContent /> */}
 		</div>
 	);
 };

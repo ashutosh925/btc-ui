@@ -3,14 +3,8 @@ import { useStyles } from './Styles';
 import SelectDropDown from './IndexSelect';
 import ButtonComponent from '../../components/Button';
 import InputComponent from '../../components/Input';
-// import ItemFilter from './IndexItemFilter';
-// import Price from './IndexPrice';
-// import IndexTraitFilter from './IndexTraitFilter';
-// import Traits from './IndexTraits';
-// import Paper from '@material-ui/core/Paper';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Typography } from '@material-ui/core';
 import { ThemeContext } from '../../ThemeContext';
 import Hidden from '@material-ui/core/Hidden';
 import { HideContentMd } from './HideContentMd';
@@ -34,9 +28,7 @@ const Sidebar = (props) => {
 		<ThemeProvider theme={themeLight}>
 			<CssBaseline>
 				<div className={classes.root}>
-					<Typography>
-						<h1 className={classes.headingProject}>Project</h1>
-					</Typography>
+					<h1 className={classes.headingProject}>Project</h1>
 
 					<SelectDropDown />
 					<div className="d-flex w-100 p-3 justify-content-center">
@@ -64,7 +56,7 @@ const Sidebar = (props) => {
 					</Hidden>
 
 					<Hidden only={[ 'lg', 'xl' ]}>
-						<button onClick={filterToggle} style={{ background: 'none', border: 'none' }}>
+						<div onClick={filterToggle}>
 							<ButtonComponent
 								description="Show Filters"
 								padding="0px 4px"
@@ -76,7 +68,7 @@ const Sidebar = (props) => {
 								height="27px"
 								bgcolorHover="rgb(167 18 80)"
 							/>
-						</button>
+						</div>
 					</Hidden>
 					{showFilters ? <HideContentMd /> : null}
 				</div>
@@ -84,4 +76,4 @@ const Sidebar = (props) => {
 		</ThemeProvider>
 	);
 };
-export default Sidebar;
+export default React.memo(Sidebar);

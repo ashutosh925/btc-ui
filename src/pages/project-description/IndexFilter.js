@@ -28,7 +28,7 @@ const Filter = () => {
 				<Grid item={3}>
 					<FormControl>
 						<Select className={classes.SelectInput} style={{ background: darkMode ? '#374151' : 'white' }}>
-							<MenuItem value="ss">Hellow</MenuItem>
+							<MenuItem>Hellow</MenuItem>
 						</Select>
 					</FormControl>
 				</Grid>
@@ -40,19 +40,17 @@ const Filter = () => {
 							margin="0px 7px"
 							width="40px"
 							color={darkMode ? '#9CA3AF' : '#BE185D'}
-							bgColor="transparent"
 							border="1px solid #525252 "
 							borderRadius="7px"
 							// bgColor={darkMode ? '#6B7280' : 'transparent'}
 							bgcolorHover="rgb(241 239 240)"
 						/>
 						<ButtonComponent
-							description={<img src={imgicon} alt="Img" style={{ width: '15px', height: '15px' }} />}
+							description={<img src={imgicon} alt="btnicon" style={{ width: '15px', height: '15px' }} />}
 							padding="3px 1px"
 							margin="0px 7px"
 							width="40px"
 							color={darkMode ? '#FFFFFF' : '#BE185D'}
-							bgColor="transparent"
 							border="1px solid #525252 "
 							borderRadius="7px"
 							// bgColor={darkMode ? '#6B7280' : 'transparent'}
@@ -71,22 +69,23 @@ const Filter = () => {
 							pColor="#EC407A"
 						/>
 						<p className={classes.sortingTitle}>of 209</p>
-						<ButtonComponent
-							description="Next >"
-							padding="2px 2px"
-							margin="0px 7px"
-							color="#FFFFFF"
-							width="60px"
-							// bgColor="transparent"
-							border="1px solid #525252 "
-							borderRadius="7px"
-							bgColor={darkMode ? '#6B7280' : '#BE185D'}
-							bgcolorHover="rgb(167 18 80)"
-						/>
+						<div>
+							<ButtonComponent
+								description="Next >"
+								padding="2px 2px"
+								margin="0px 7px"
+								color="#FFFFFF"
+								width="60px"
+								border="1px solid #525252 "
+								borderRadius="7px"
+								bgColor={darkMode ? '#6B7280' : '#BE185D'}
+								bgcolorHover="rgb(167 18 80)"
+							/>
+						</div>
 					</div>
 				</Grid>
 			</Grid>
 		</div>
 	);
 };
-export default Filter;
+export default React.memo(Filter);

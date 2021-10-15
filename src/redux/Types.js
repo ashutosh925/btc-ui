@@ -1,0 +1,10 @@
+export const GET_BOOKS = "GET_BOOKS";
+export const USER_SIGNUP = "USER_SIGNUP";
+export const USER_SIGNIN = "USER_SIGNIN";
+export const LOG_OUT = "LOG_OUT";
+export const USER_LOGIN_ALERT = "USER_LOGIN_ALERT";
+export const SINGLE_BOOK_FETCH = "SINGLE_BOOK_FETCH";
+export const EDIT_BOOK_DETAILS = "EDIT_BOOK_DETAILS";
+export const POST_NEW_BOOKS = "POST_NEW_BOOKS";
+export const SINGLEBOOK_DETAIL_REMOVE = "SINGLEBOOK_DETAIL_REMOVE";
+export const BOOK_IMAGE_ID = "BOOK_IMAGE_ID";

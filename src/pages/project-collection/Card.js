@@ -24,4 +24,4 @@ const MediaCard = (props) => {
 		</Card>
 	);
 };
-export default MediaCard;
+export default React.memo(MediaCard);

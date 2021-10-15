@@ -4,3 +4,6 @@
 	box-sizing: border-box;
 	font-family: 'Source Sans Pro', sans-serif !important;
 }
+html:focus-within {
+	scroll-behavior: smooth;
+}

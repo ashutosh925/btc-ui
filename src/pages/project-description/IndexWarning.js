@@ -93,4 +93,4 @@ const IndexWarning = () => {
 	);
 };
 
-export default IndexWarning;
+export default React.memo(IndexWarning);

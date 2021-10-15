@@ -40,4 +40,4 @@ const Price = (props) => {
 		</div>
 	);
 };
-export default Price;
+export default React.memo(Price);

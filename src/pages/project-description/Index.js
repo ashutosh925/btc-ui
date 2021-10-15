@@ -8,13 +8,11 @@ import ButtonComponent from '../../components/Button';
 import IndexWarning from './IndexWarning';
 import Ranking from './IndexRanking';
 import Filter from './IndexFilter';
-// import { ThemeContext } from '../../ThemeContext';
 import Collection from '../project-collection/Index';
 import NewsCollections from '../newest-collection/Index';
 import TopCollection from '../topcollection/Index';
+import ModalCard from '../modal/Model';
 const ProjectDescription = () => {
-	// const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
-
 	const classes = useStyles();
 	const adImg = 'https://current.images.rarity.tools/samuraidoge_horiz_d';
 	return (
@@ -25,6 +23,7 @@ const ProjectDescription = () => {
 					<img src={adImg} alt="adbanner" style={{ maxWidth: '100%', maxHeight: '100%' }} />
 					<p className="text-muted">Please visit our sponsors!</p>
 				</div>
+				<ModalCard />
 				<div style={{ width: '90%', margin: ' 20px auto' }}>
 					<Grid container>
 						<Grid item lg={8}>
@@ -65,7 +64,6 @@ const ProjectDescription = () => {
 									borderRadius="8px"
 									color="#DB2777"
 									bgColor="transparent"
-									// border="none"
 									margin="0px 5px"
 									border=" 1px solid #DB2777"
 									height="45px"
@@ -97,4 +95,4 @@ const ProjectDescription = () => {
 		</div>
 	);
 };
-export default ProjectDescription;
+export default React.memo(ProjectDescription);

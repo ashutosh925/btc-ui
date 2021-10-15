@@ -1,11 +1,6 @@
 import React from 'react';
-
 import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
 import Avatar from '@material-ui/core/Avatar';
-
-// import CardMedia from '@material-ui/core/CardMedia';
-
 import { useStyles } from './Styles';
 const MediaCard = (props) => {
 	const classes = useStyles(props);
@@ -18,7 +13,12 @@ const MediaCard = (props) => {
 
 			<div className="d-flex justify-content-between mt-4 p-2">
 				<h1 className={classes.cardHeading}>{props.title}</h1>
-				<Avatar alt="Remy Sharp" variant="circle" src={props.icon} style={{ width: '50px', height: '50px' }} />
+				<Avatar
+					alt="Remy Sharp"
+					variant="circular"
+					src={props.icon}
+					style={{ width: '50px', height: '50px' }}
+				/>
 			</div>
 			<div>
 				<p>
@@ -35,4 +35,4 @@ const MediaCard = (props) => {
 		</Card>
 	);
 };
-export default MediaCard;
+export default React.memo(MediaCard);

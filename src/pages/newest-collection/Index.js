@@ -37,4 +37,4 @@ const NewsCollections = () => {
 		</div>
 	);
 };
-export default NewsCollections;
+export default React.memo(NewsCollections);
