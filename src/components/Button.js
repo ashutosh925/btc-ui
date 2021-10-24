@@ -5,7 +5,7 @@ const Button = (props) => {
 	const classes = useStyles(props);
 	return (
 		<div>
-			<button className={classes.button}>{props.description}</button>
+			<button className={classes.button} onClick={()=>props.onClick()}>{props.description}</button>
 		</div>
 	);
 };

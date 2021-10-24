@@ -58,6 +58,7 @@ export default function SimpleModal() {
 			<Card />
 		</div>
 	);
+	
 	return (
 		<div>
 			<Modal

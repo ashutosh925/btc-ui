@@ -1,29 +1,23 @@
 import React, { useContext } from 'react';
 import TopBar from '../../pages/topbar/Index';
 import { Grid } from '@material-ui/core';
-// import { createTheme } from '@material-ui/core/styles';
-// import { ThemeContext } from '../../ThemeContext';
-// import ProjectDescription from '../../pages/project-description/Index';
+import NewsCollections from "../../pages/newest-collection/Index";
 
-import { ThemeContext } from '../ThemeContext';
-import ProjectDescription from '../pages/project-description/Index';
-
-const Container = () => {
-	const { 0: darkMode } = useContext(ThemeContext);
+const Projects = () => {
 
 	return (
 		<div>
 			<TopBar />
 			<br />
 
-			<Grid container direction="row" justifyContent="center">
+			<Grid Projects direction="row" justifyContent="center" style={{paddingLeft: '10%'}}>
 				<Grid item sm={12} md={12} lg={10} xl={10}>
 					<div className="parent-mid">
-						<ProjectDescription />
+						<NewsCollections/>
 					</div>
 				</Grid>
 			</Grid>
 		</div>
 	);
 };
-export default React.memo(Container);
+export default React.memo(Projects);

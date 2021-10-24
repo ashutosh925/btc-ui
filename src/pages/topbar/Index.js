@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { useStyles } from './Styles';
-import Grid from '@material-ui/core/Grid';
 import ButtonComponent from '../../components/Button';
 import twitter from '../../assets/twitter.png';
 import medium from '../../assets/medium.png';
@@ -9,8 +8,19 @@ import Hidden from '@material-ui/core/Hidden';
 import Avatars from './TopbarAvatars';
 import darkTheme from '../../assets/darktheme.svg';
 import { ThemeContext } from '../../ThemeContext';
+import {
+	Button,
+    Grid,
+    Modal,
+	Typography,
+} from '@material-ui/core';
+import AddProject from "../AddProject/AddProject";
+import AddProjectNFT from "../AddProjectNFT/AddProjectNFT";
+import DialogContent from "@material-ui/core/DialogContent";
 
 const TopBar = () => {
+	const [addProject, setAddProject ] = useState(false);
+	const [addProjectNFT, setAddProjectNFT]  = useState(false);
 	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
 	const classes = useStyles();
 	const darkchange = () => {
@@ -47,35 +57,61 @@ const TopBar = () => {
 					<Grid sm={7} lg={6}>
 						<Avatars />
 					</Grid>
-					<Grid sm={2} lg={4}>
+					<Grid sm={4} lg={4} >
 						<div className="d-flex justify-content-end">
-							<Hidden only={[ 'xs', 'sm', 'md' ]}>
-								<a href="#" target="_blank" className={classes.rightAhrefLinksFirstBorder}>
-									List your Project
-								</a>
+							<Hidden>
+							<ButtonComponent
+								description={<span className={classes.buttonText}>Add Project</span>}
+								borderRadius="8px"
+								padding="0px 10px"
+								bgColor="#BE185D"
+								border="none"
+								height="25px"
+								bgcolorHover="rgb(167 18 80)"
+								onClick={()=>setAddProject(!addProject)}
+							/>
 							</Hidden>
-							<Hidden only={[ 'xs', 'sm' ]}>
-								<a href="#" target="_blank" className={classes.ahrefLinks2}>
-									Advertise
-								</a>
+							<Hidden >
+							<ButtonComponent
+								description={<span className={classes.buttonText}>Add Project NFT</span>}
+								borderRadius="8px"
+								padding="0px 10px"
+								bgColor="#BE185D"
+								border="none"
+								height="25px"
+								bgcolorHover="rgb(167 18 80)"
+								onClick={()=>setAddProjectNFT(!addProjectNFT)}
+							/>
 							</Hidden>
-							<Hidden only={[ 'xs', 'sm' ]}>
-								<a href="#" target="_blank" className={classes.ahrefLinks2}>
-									Contact Us
-								</a>
-							</Hidden>
-							<Hidden only={[ 'xs' ]}>
-								<a href="#" target="_blank" className={classes.ahrefLinks2}>
-									About
-								</a>
-							</Hidden>
-							<button onClick={darkchange} className={classes.darkThemeBtn}>
-								<img src={darkTheme} alt="darkthemeBtn" />
-							</button>
 						</div>
 					</Grid>
 				</Grid>
 			</AppBar>
+			<div>
+                {/* Add Project Modal */}
+                <Modal
+                    open={addProject}
+                    onClose={() => setAddProject(false)}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+					<DialogContent>
+						<AddProject/>
+					</DialogContent>		
+				</Modal>
+
+				{/* Add Project NFT Modal */}
+                <Modal
+                    open={addProjectNFT}
+                    onClose={() => setAddProjectNFT(false)}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+					<DialogContent>
+						<AddProjectNFT/>
+					</DialogContent>		
+				</Modal>
+            </div>
 		</div>
 	);
 };
