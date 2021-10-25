@@ -2,12 +2,16 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import auth from './reducers/Auth';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { nftListReducer } from './reducers/nftReducer';
+import { projectListReducer } from './reducers/projectReducers';
 const initialState = {};
 
 const Middleware = [ thunk ];
 
 const reducers = combineReducers({
-	auth
+	auth,
+	nftReducer:nftListReducer,
+	projectReducer:projectListReducer,
 });
 
 const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(...Middleware)));
