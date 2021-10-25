@@ -7,6 +7,7 @@ import { listProject } from '../../redux/actions/projectActions'
 
 const Projects = () => {
     const dispatch = useDispatch()
+    
     useEffect(() => {
         dispatch(listProject({}))
     }, [dispatch])

@@ -4,10 +4,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useFormik } from 'formik';
+import { useHistory } from 'react-router';
 import * as yup from 'yup';
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Visibility from "@material-ui/icons/Visibility";
-
+import axios from "axios";
 const validationSchema = yup.object({
     email: yup
       .string('Enter your email')
@@ -20,7 +21,7 @@ const validationSchema = yup.object({
   });
 
 const Login=()=>{
-
+  const history = useHistory();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -52,8 +53,11 @@ const Login=()=>{
     setFormData({ ...formData, [prop]: event.target.value });
     };
 
-    const handleSubmit = () =>{
-        console.log('handleSubmit')
+    const handleSubmit = async() =>{
+        // console.log('handleSubmit')
+      const res = await axios.post("/users/login",formData );
+      console.log(res);
+      history.push('/');
     }
     return(
         <Grid 
@@ -70,9 +74,9 @@ const Login=()=>{
                     <h2>Sign In</h2>
                 </Grid>
                 <form onSubmit={formik.handleSubmit}>
-                <TextField label='Username' placeholder='Enter username' fullWidth required onChange={()=>handleChange()}/>
+                <TextField label='Username' placeholder='Enter username' name="email"  fullWidth required onChange={()=>handleChange()}/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required onChange={()=>handleChange()}/>
-                <Button type='submit' color='primary' variant="contained" size="large" fullWidth onClick={handleSubmit}>Sign in</Button>
+                <Button type='submit' color='primary' variant="contained" size="large" name="password" fullWidth onClick={handleSubmit}>Sign in</Button>
                 </form>
             </Paper>
         </Grid>

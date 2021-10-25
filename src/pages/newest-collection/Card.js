@@ -33,6 +33,7 @@ const MediaCard = (props) => {
 				<p className={classes.cardBttom}>{props.bottomTitle}</p>
 			</div>
 		</Card>
+		
 	);
 };
 export default React.memo(MediaCard);
