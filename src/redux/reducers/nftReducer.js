@@ -10,7 +10,7 @@ export const nftListReducer =
       case GET_NFT:
         return {
           loading: false,
-          nfts: action.payload.nfts,
+          nfts: action.payload.data,
         };
       case GET_NFT_FAILED:
         return { loading: false, error: action.payload };

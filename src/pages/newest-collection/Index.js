@@ -10,14 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 const NewsCollections = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
 	const classes = useStyles();
-	const dispatch = useDispatch();
-const projectReducer = useSelector((state) => state.projectReducer)
-	const {loading , data , error} =projectReducer ;
-useEffect(() => {
-dispatch(listProject({}))
-// console.log(dispatch(listProject({})));
-}, [dispatch])
-console.log(data);
+	const dispatch = useDispatch();	
+	const projectReducer = useSelector((state) =>  state.projectReducer);
+	const {loading , projects , error} =projectReducer;
 
 	return (
 		<div className={classes.root}>
@@ -47,4 +42,6 @@ console.log(data);
 		</div>
 	);
 };
+
+
 export default React.memo(NewsCollections);

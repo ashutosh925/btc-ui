@@ -10,7 +10,7 @@ export const projectListReducer =
       case GET_PROJECT:
         return {
           loading: false,
-          projects: action.payload.projects,
+          projects: action.payload.data,
         };
       case GET_PROJECT_FAILED:
         return { loading: false, error: action.payload };

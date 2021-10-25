@@ -1,25 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Sidebar from '../../pages/sidebar/Index';
 import TopBar from '../../pages/topbar/Index';
 import { Grid } from '@material-ui/core';
-// import { createTheme } from '@material-ui/core/styles';
 import { ThemeContext } from '../../ThemeContext';
 import ProjectDescription from '../../pages/project-description/Index';
+import { listNft } from '../../redux/actions/nftactions'
+import { useDispatch } from 'react-redux'
 
 const Container = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
-	// const themeLight = createTheme({
-	// 	palette: {
-	// 		background: {
-	// 			default: darkMode ? '#e4f0e2' : 'light'
-	// 		}
-	// 	}
-	// });
-	// const themeMode = createTheme({
-	// 	palette: {
-	// 		type: darkMode ? 'dark' : 'light'
-	// 	}
-	// });
+	const dispatch = useDispatch()
+	
+	useEffect(() => {
+		dispatch(listNft({}));
+	}, []);
 	return (
 		<div>
 			<TopBar />
