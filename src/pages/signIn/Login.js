@@ -23,8 +23,6 @@ const validationSchema = yup.object({
 const Login=()=>{
   const history = useHistory();
     const [formData, setFormData] = useState({
-        email: '',
-        password: '',
         showPassword: false,
     })
     const avatarStyle={backgroundColor:'#1bbd7e'}
@@ -39,24 +37,14 @@ const Login=()=>{
         },
       });
 
-      const handleClickShowPassword = () => {
-        setFormData({
-          ...formData,
-          showPassword: !formData.showPassword,
-        });
-      };
     
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-    const handleChange = (prop) => (event) => {
-    setFormData({ ...formData, [prop]: event.target.value });
+    const handleChange = (event) => {
+     setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = async() =>{
-        // console.log('handleSubmit')
-      const res = await axios.post("/users/login",formData );
-      console.log(res);
+      const res = await axios.post("/users/login",
+      { user_email:  formData.user_email, user_password: formData.user_password} );
       history.push('/');
     }
     return(
@@ -74,8 +62,8 @@ const Login=()=>{
                     <h2>Sign In</h2>
                 </Grid>
                 <form onSubmit={formik.handleSubmit}>
-                <TextField label='Username' placeholder='Enter username' name="email"  fullWidth required onChange={()=>handleChange()}/>
-                <TextField label='Password' placeholder='Enter password' type='password' fullWidth required onChange={()=>handleChange()}/>
+                <TextField label='Username' placeholder='Enter username' name="user_email"  fullWidth required onChange={(e)=>handleChange(e)}/>
+                <TextField label='Password' placeholder='Enter password' name="user_password" type='password' fullWidth required onChange={(e)=>handleChange(e)}/>
                 <Button type='submit' color='primary' variant="contained" size="large" name="password" fullWidth onClick={handleSubmit}>Sign in</Button>
                 </form>
             </Paper>
