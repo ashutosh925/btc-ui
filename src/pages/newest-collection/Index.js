@@ -1,11 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useStyles } from './Styles';
 import { Grid } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit'
 import cardContent from './Content';
+import cokie from 'js-cookie';
 import Card from './Card';
 import { ThemeContext } from '../../ThemeContext';
 import { listProject } from '../../redux/actions/projectActions';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 
 const NewsCollections = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
@@ -13,8 +17,30 @@ const NewsCollections = () => {
 	const dispatch = useDispatch();	
 	const projectReducer = useSelector((state) =>  state.projectReducer);
 	const {loading , projects , error} =projectReducer;
-console.log(projects);
+	const [admin, setAdmin] = useState('');
 
+	const readCookie = () => {
+	
+		const user = cokie.get("user");
+	
+	if(user){
+		setAdmin(true);
+	
+	}
+	};
+	const data = JSON.parse(localStorage.getItem("userInfo")).token ;
+	// console.log(data);
+	const deleteHandel = async(id) => {
+		await	Axios.delete("project/delete", {id , token:data})
+		console.log(id);
+	}
+	const editHandel = async(id) => {
+
+		await	Axios.patch("", {id})
+	}
+	useEffect(() => {
+		readCookie();
+	}, [])
 
 	return (
 		<div className={classes.root}>
@@ -27,6 +53,14 @@ console.log(projects);
 						return (
 							<div key={idx}>
 								<Grid item lg={5}>
+								{admin?
+								<div>
+
+								<DeleteIcon style={{"cursor":"pointer"}} onClick={() => deleteHandel(card._id)}/>
+								<EditIcon style={{"margin-left":"20px" , "cursor":"pointer"}}  onClick={ () =>  editHandel(card._id)}/>
+								</div>
+								:''
+								}
 									<Card
 										img={card.project_file}
 										bottomTitle={card.project_description}

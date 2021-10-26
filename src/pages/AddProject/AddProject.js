@@ -18,7 +18,7 @@ import Icon from "@material-ui/core/Icon";
 import { teal, grey } from "@material-ui/core/colors";
 import { makeStyles } from '@material-ui/core/styles';
 import Axios from "axios";
-
+import { useHistory } from 'react-router';
 function getModalStyle() {
 	const top = 50;
 	const left = 50;
@@ -82,7 +82,7 @@ const AddProject = () => {
        
     })
 
-
+    const history = useHistory();
     const [values, setValues] = React.useState({
       shipping: "Cat in the Hat",
       country: "",
@@ -91,6 +91,7 @@ const AddProject = () => {
       postalCode: "",
       address: ""
     });
+    
     let name , value
     const handelInputs = (e) => {
       name = e.target.name;
@@ -101,7 +102,8 @@ const AddProject = () => {
     }
     const submiHandel = async(e) => {
       e.preventDefault();
-      Axios.post("/projects" , formData)
+      await Axios.post("/projects" , formData)
+      history.push('/');
     }
 
     return (
