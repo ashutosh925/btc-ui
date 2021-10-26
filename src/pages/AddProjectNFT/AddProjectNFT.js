@@ -18,6 +18,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import Icon from '@material-ui/core/Icon'
 import { teal, grey } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
+import Axios from 'axios'
 
 function getModalStyle() {
     const top = 50
@@ -84,6 +85,10 @@ const AddProject = () => {
         postalCode: '',
         address: '',
     })
+
+    const submitHandel = (e) => {
+        Axios.post("/project_nft" , values)
+    }
 
     return (
         <Grid container style={modalStyle} className={classes.paper}>
@@ -156,6 +161,7 @@ const AddProject = () => {
                 fullWidth
                 type="large"
                 color="primary"
+                onClick={submitHandel}
             >
                 Add Project
             </Button>

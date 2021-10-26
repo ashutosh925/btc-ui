@@ -14,6 +14,8 @@ const NewsCollections = () => {
 	const projectReducer = useSelector((state) =>  state.projectReducer);
 	const {loading , projects , error} =projectReducer;
 console.log(projects);
+
+
 	return (
 		<div className={classes.root}>
 			<h1 className={classes.heading}>Newest Collections Added</h1>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { useStyles } from './Styles';
 import ButtonComponent from '../../components/Button';
@@ -6,6 +6,9 @@ import twitter from '../../assets/twitter.png';
 import medium from '../../assets/medium.png';
 import Hidden from '@material-ui/core/Hidden';
 import Avatars from './TopbarAvatars';
+import cookie from 'js-cookie';
+// import { useHistory } from 'react-router'
+import createHistory from 'history/createBrowserHistory'
 import darkTheme from '../../assets/darktheme.svg';
 import { ThemeContext } from '../../ThemeContext';
 import {
@@ -21,12 +24,34 @@ import DialogContent from "@material-ui/core/DialogContent";
 const TopBar = () => {
 	const [addProject, setAddProject ] = useState(false);
 	const [addProjectNFT, setAddProjectNFT]  = useState(false);
+	const [admin, setAdmin] = useState('');
 	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
 	const classes = useStyles();
 	const darkchange = () => {
 		setDarkMode(!darkMode);
 	};
+const readCookie = () => {
+	
+	const user = cookie.get("user");
 
+if(user){
+  setAdmin(true);
+
+}
+};
+// const history = useHistory()
+const history = createHistory();
+const logout = () => {
+	const removeCokie = () => {
+
+		cookie.remove("user")
+		history.go(0)
+	}
+	removeCokie();
+}
+useEffect(() => {
+	readCookie();
+}, [])
 	return (
 		<div className={classes.root}>
 			<AppBar className={classes.appBar} position="fixed">
@@ -58,7 +83,7 @@ const TopBar = () => {
 						<Avatars />
 					</Grid>
 					<Grid sm={4} lg={4} >
-						<div className="d-flex justify-content-end">
+					{ admin?<div className="d-flex justify-content-end">
 							<Hidden>
 							<ButtonComponent
 								description={<span className={classes.buttonText}>Add Project</span>}
@@ -83,7 +108,20 @@ const TopBar = () => {
 								onClick={()=>setAddProjectNFT(!addProjectNFT)}
 							/>
 							</Hidden>
-						</div>
+							<Hidden >
+							<ButtonComponent
+								description={<span className={classes.buttonText}>Log Out</span>}
+								borderRadius="8px"
+								padding="0px 10px"
+								bgColor="#BE185D"
+								border="none"
+								height="25px"
+								bgcolorHover="rgb(167 18 80)"
+								onClick={logout}
+							/>
+							</Hidden>
+						</div>:'' }
+						
 					</Grid>
 				</Grid>
 			</AppBar>

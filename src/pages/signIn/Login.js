@@ -3,6 +3,7 @@ import { Grid,Paper, Avatar, TextField, Button, Typography,Link, IconButton, For
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import cookie from 'js-cookie';
 import { useFormik } from 'formik';
 import { useHistory } from 'react-router';
 import * as yup from 'yup';
@@ -45,6 +46,8 @@ const Login=()=>{
     const handleSubmit = async() =>{
       const res = await axios.post("/users/login",
       { user_email:  formData.user_email, user_password: formData.user_password} );
+      localStorage.setItem("userInfo" , JSON.stringify(res.data));
+      cookie.set('user' , JSON.stringify(res.data))
       history.push('/');
     }
     return(
