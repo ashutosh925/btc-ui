@@ -37,7 +37,7 @@ const IndexSelect = () => {
 							return (
 								<div key={idx}>
 									<MenuItem value={items.project_name}>
-										<span style={{ color: darkMode ? '#9CA3AF' : 'black' }}>{items.listItem}</span>
+										<span style={{ color: darkMode ? '#9CA3AF' : 'black' }}>{items.project_name}</span>
 									</MenuItem>
 								</div>
 							);

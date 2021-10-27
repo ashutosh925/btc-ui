@@ -20,6 +20,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import Axios from "axios";
 import { useHistory } from 'react-router';
+import { listProject } from "../../redux/actions/projectActions";
 function getModalStyle() {
 	const top = 50;
 	const left = 50;
@@ -65,12 +66,13 @@ const AddProject = () => {
       value = e.target.value;
 
       setFormData({...formData , [name]:value })
-     (formData);
+   
     }
     const submiHandel = async(e) => {
       e.preventDefault();
       Axios.post("/projects" , formData)
       dispatch({ type: 'Project Modal', payload: false });
+      dispatch(listProject({}))
     }
 
     return (
@@ -176,6 +178,7 @@ const AddProject = () => {
           </Grid>
          
         </Grid>
+
         </>
         );
 }

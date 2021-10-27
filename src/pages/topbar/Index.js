@@ -100,6 +100,7 @@ const handleModal = (type, state) => {
 								height="25px"
 								bgcolorHover="rgb(167 18 80)"
 								onClick={()=>handleModal('Project Modal',true)}
+								
 							/>
 							</Hidden>
 							<Hidden >

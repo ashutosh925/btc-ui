@@ -10,7 +10,7 @@ const IndexItemFilter = (props) => {
 
 	return (
 		<div>
-			<div className={classes.itemFilter}>
+			{/* <div className={classes.itemFilter}>
 				<p className={classes.itemFilterHeading} style={{ color: props.color }}>
 					Item Filters
 				</p>
@@ -39,7 +39,7 @@ const IndexItemFilter = (props) => {
 						bgcolorHover={darkMode ? 'none' : 'rgb(241 239 240)'}
 					/>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

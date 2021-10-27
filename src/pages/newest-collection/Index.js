@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useStyles } from './Styles';
-import { Grid } from '@material-ui/core';
+import { DialogContent, Grid , Modal } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import cardContent from './Content';
@@ -11,6 +11,8 @@ import { listProject } from '../../redux/actions/projectActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import Axios from 'axios';
+import { CURRENT_PROJECT } from '../../redux/Types';
+import AddProject from '../AddProject/AddProject';
 
 const NewsCollections = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
@@ -20,7 +22,8 @@ const NewsCollections = () => {
 	const {loading , projects , error} =projectReducer;
 
 	const [admin, setAdmin] = useState('');
-
+	const modalState = useSelector((state) => state.auth);
+	console.log(modalState);	
 	const readCookie = () => {
 	
 		const user = cokie.get("user");
@@ -34,13 +37,23 @@ const NewsCollections = () => {
 	const data =  userData && userData.token;
 
 	const deleteHandel = async(id) => {
-		await	Axios.delete("project/delete", {id , token:data})
-	(id);
+	 	await	Axios.delete(`/projects/${id}`, {token:data})
+		 dispatch(listProject({}))
+	
+	
 	}
-	const editHandel = async(id) => {
+	const editHandel = async(project) => {
 
-		await	Axios.patch("", {id})
+		dispatch({ type:" EDIT_PROJECT_MODAL", payload: true });
+		dispatch({type:CURRENT_PROJECT , payload:project})
+		console.log(project);
+		await	Axios.patch(`/projects/${project.id}`, {})
+		dispatch(listProject({}))
 	}
+
+	// const handleModal = (type, state) => {
+	// 	dispatch({ type: type, payload: state });
+	// }
 	useEffect(() => {
 		readCookie();
 	}, [])
@@ -64,7 +77,7 @@ const history = useHistory()
 								<div>
 
 								<DeleteIcon style={{"cursor":"pointer"}} onClick={() => deleteHandel(card._id)}/>
-								<EditIcon style={{"margin-left":"20px" , "cursor":"pointer"}}  onClick={ () =>  editHandel(card._id)}/>
+								<EditIcon style={{"margin-left":"20px" , "cursor":"pointer"}}  onClick={ () =>  editHandel(card)}/>
 								</div>
 								:''
 								}
@@ -78,14 +91,23 @@ const history = useHistory()
 										icon={card.project_logo}
 
 										darkTheme={darkMode}
-										onClick={() => handelClick(card)}
+										onClick={() => handelClick(card , 'Project Modal',true)}
 									/>
 								</Grid>
 							</div>
 						);
 					})}
 			</Grid>
-			
+			              <Modal
+                    open={modalState.editProjectModal}
+                    onClose={() => editHandel('editProjectModal',false)}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                >
+											<DialogContent>
+												<AddProject/>
+											</DialogContent>		
+										</Modal>
 		</div>
 	);
 };
