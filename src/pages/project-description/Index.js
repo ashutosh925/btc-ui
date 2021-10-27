@@ -18,6 +18,7 @@ const ProjectDescription = () => {
 	const classes = useStyles();
 	const adImg = 'https://current.images.rarity.tools/samuraidoge_horiz_d';
 	const state = useSelector((state) => state.nftReducer);
+
 	return (
 		<div className={`${classes.root} mid-root`}>
 			<div className={classes.imgParentDiv}>
@@ -36,7 +37,7 @@ const ProjectDescription = () => {
 									src={midicon1}
 									style={{ width: '35px', height: '35px', margin: '10px 10px 0px 0px' }}
 								/>
-								<h1 className={classes.adHeading}>Primate Social Society Official Ranked by Rarity</h1>
+								<h1 className={classes.adHeading}>{state.currentProject && state.currentProject.project_name}</h1>
 							</div>
 						</Grid>
 						<Grid item lg={4}>

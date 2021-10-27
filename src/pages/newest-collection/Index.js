@@ -18,6 +18,7 @@ const NewsCollections = () => {
 	const dispatch = useDispatch();	
 	const projectReducer = useSelector((state) =>  state.projectReducer);
 	const {loading , projects , error} =projectReducer;
+
 	const [admin, setAdmin] = useState('');
 
 	const readCookie = () => {
@@ -31,10 +32,10 @@ const NewsCollections = () => {
 	};
 	const userData = JSON.parse(localStorage.getItem("userInfo"));
 	const data =  userData && userData.token;
-	// console.log(data);
+
 	const deleteHandel = async(id) => {
 		await	Axios.delete("project/delete", {id , token:data})
-		console.log(id);
+	(id);
 	}
 	const editHandel = async(id) => {
 
@@ -73,8 +74,9 @@ const history = useHistory()
 										title={card.project_name}
 										subtitle={card.project_added}
 										subtitle2={card.project_owner}
-										// subtitle3={card.subtitle3}
+										subtitle3={card.project_volume}
 										icon={card.project_logo}
+
 										darkTheme={darkMode}
 										onClick={() => handelClick(card)}
 									/>

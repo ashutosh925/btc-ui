@@ -65,7 +65,7 @@ const AddProject = () => {
       value = e.target.value;
 
       setFormData({...formData , [name]:value })
-      console.log(formData);
+     (formData);
     }
     const submiHandel = async(e) => {
       e.preventDefault();

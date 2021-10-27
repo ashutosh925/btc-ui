@@ -21,9 +21,9 @@ const Sidebar = (props) => {
 	});
 	const filterToggle = () => {
 		setFilters(!showFilters);
-		console.log('from filter', showFilters);
+
 	};
-	console.log('from filter', showFilters);
+
 	return (
 		<ThemeProvider theme={themeLight}>
 			<CssBaseline>

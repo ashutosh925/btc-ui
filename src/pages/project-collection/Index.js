@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import contentMid from './ProjectContent';
 import MediaCard from './Card';
@@ -12,11 +12,16 @@ const Collection = () => {
 		dispatch({ type: 'GET ID', payload: id });
 		dispatch({ type: 'MODAL OPEN', payload: true });
 	};
+	const state = useSelector((state) => state.nftReducer);
+	const {loading, nfts} = state
+	const [data] = nfts
+
+
 	return (
 		<div>
 			<Grid container>
-				{contentMid &&
-					contentMid.map((card, idx) => {
+				{data &&
+					data.project_nft.map((card, idx) => {
 						return (
 							<div
 								key={idx}
@@ -28,8 +33,8 @@ const Collection = () => {
 									<MediaCard
 										id={idx}
 										aHrefs={card.title}
-										img={card.img}
-										bottomTitle={card.bottomTitle}
+										img={card.image}
+										bottomTitle={card.name_of_nft}
 										darkTheme={darkMode}
 									/>
 								</Grid>
