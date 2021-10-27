@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from 'react-redux'
 const Container = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
 	const dispatch = useDispatch()
-	const state = useSelector((state) => state.auth);
-	console.log(state.currentProject);
+	const state = useSelector((state) => state.nftReducer);
+	console.log(state);
 	useEffect(() => {
 		dispatch(listNft({}));
 	}, []);

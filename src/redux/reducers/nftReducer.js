@@ -9,11 +9,11 @@ export const nftListReducer =
       return { loading: true };
       case GET_NFT:
         return {
-          loading: false,
+          ...state,
           nfts: action.payload.data,
         };
       case GET_NFT_FAILED:
-        return { loading: false, error: action.payload };
+        return { ...state, error: action.payload };
         case CURRENT_PROJECT:
           return {...state , currentProject:action.payload }
       default:

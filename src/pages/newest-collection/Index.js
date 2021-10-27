@@ -9,6 +9,7 @@ import Card from './Card';
 import { ThemeContext } from '../../ThemeContext';
 import { listProject } from '../../redux/actions/projectActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import Axios from 'axios';
 
 const NewsCollections = () => {
@@ -41,10 +42,10 @@ const NewsCollections = () => {
 	useEffect(() => {
 		readCookie();
 	}, [])
-
+const history = useHistory()
 	const handelClick = (card) => {
 		dispatch({ type: 'CURRENT_PROJECT', payload: card });
-		history.pushState("/nfts")
+		history.push("/nfts")
 	}
 	return (
 		<div className={classes.root}>
