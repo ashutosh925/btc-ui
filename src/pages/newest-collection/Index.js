@@ -43,8 +43,8 @@ const NewsCollections = () => {
 	}, [])
 
 	const handelClick = (card) => {
-		console.log(card);
-		dispatch()
+		dispatch({ type: 'CURRENT_PROJECT', payload: card });
+		history.pushState("/nfts")
 	}
 	return (
 		<div className={classes.root}>

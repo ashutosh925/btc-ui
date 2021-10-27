@@ -5,12 +5,13 @@ import { Grid } from '@material-ui/core';
 import { ThemeContext } from '../../ThemeContext';
 import ProjectDescription from '../../pages/project-description/Index';
 import { listNft } from '../../redux/actions/nftactions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Container = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
 	const dispatch = useDispatch()
-	
+	const state = useSelector((state) => state.auth);
+	console.log(state.currentProject);
 	useEffect(() => {
 		dispatch(listNft({}));
 	}, []);
