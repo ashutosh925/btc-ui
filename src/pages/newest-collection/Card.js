@@ -18,7 +18,7 @@ const MediaCard = (props) => {
 // 
 // 	}
 	return (
-		<Card className={classes.rootCard}>
+		<Card className={classes.rootCard} onClick={() => props.onClick()}>
 			<div className={classes.cardMedia}>
 				{/* <img src={props.img} alt="cardimge" className={classes.cardImg} /> */}
 			</div>

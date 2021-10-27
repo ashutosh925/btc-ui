@@ -42,6 +42,10 @@ const NewsCollections = () => {
 		readCookie();
 	}, [])
 
+	const handelClick = (card) => {
+		console.log(card);
+		dispatch()
+	}
 	return (
 		<div className={classes.root}>
 			<h1 className={classes.heading}>Newest Collections Added</h1>
@@ -70,6 +74,7 @@ const NewsCollections = () => {
 										// subtitle3={card.subtitle3}
 										icon={card.project_logo}
 										darkTheme={darkMode}
+										onClick={() => handelClick(card)}
 									/>
 								</Grid>
 							</div>
