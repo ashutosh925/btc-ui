@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
     FormControl,
     Grid,
@@ -14,11 +14,15 @@ import {
     Select,
 } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete'
 import CloseIcon from '@material-ui/icons/Close'
 import Icon from '@material-ui/core/Icon'
 import { teal, grey } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 import Axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { listProject } from '../../redux/actions/projectActions'
+import CSVReader from "react-csv-reader";
 
 function getModalStyle() {
     const top = 50
@@ -51,44 +55,46 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const currencies = [
-    {
-        value: 'USD',
-        label: '$',
-    },
-    {
-        value: 'EUR',
-        label: '€',
-    },
-    {
-        value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
-    },
-]
 
 const AddProject = () => {
-    const [currency, setCurrency] = React.useState('EUR')
-    const [modalStyle] = React.useState(getModalStyle)
-    const classes = useStyles()
-    const handleChange = (event) => {
-        setCurrency(event.target.value)
-    }
-    const [values, setValues] = React.useState({
-        shipping: 'Cat in the Hat',
-        country: '',
-        city: '',
-        state: '',
-        postalCode: '',
-        address: '',
+    const projectReducer = useSelector((state) =>  state.projectReducer);
+	const {loading , projects , error} = projectReducer;
+    const [modalStyle] = React.useState(getModalStyle);
+    const classes = useStyles(); 
+    const dispatch = useDispatch();	
+    const [form, setForm] = React.useState({
+        'project_name': '',
+        'project_nft': '',
     })
-
+    
+    useEffect(() => {
+        dispatch(listProject({}))   
+    }, [dispatch])
+    
     const submitHandel = (e) => {
-        Axios.post("/project_nft" , values)
+        Axios.post("/project_nft" , form)
+        dispatch({ type: 'Project NFT Modal', payload: false });
     }
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setForm({
+            ...form, [name]:value
+        })
+    }
+
+    const handleForce = (data, fileInfo) => setForm({
+        ...form,
+        'project_nft':data
+    });
+
+    const papaparseOptions = {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    transformHeader: header => header.toLowerCase().replace(/\W/g, "_")
+    };
 
     return (
         <Grid container style={modalStyle} className={classes.paper}>
@@ -117,39 +123,33 @@ const AddProject = () => {
                     <Grid item xs={12}>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">
-                                Age
+                                Project Name
                             </InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={10}
-                                label="Age"
+                                value={form.project_name}
+                                label="Project Name"
                                 onChange={handleChange}
+                                name="project_name"
                             >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                              {
+                                  projects && projects.map(project=>(
+                                  <MenuItem value={project.project_name} key={project.project_id}>{project.project_name}</MenuItem>
+                                  ))
+                              }
                             </Select>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <Input
-                                    accept="image/*"
-                                    id="contained-button-file"
-                                    multiple
-                                    type="file"
-                                    className={classes.fileUpload}
-                                />
-                                <Button
-                                    variant="contained"
-                                    component="span"
-                                    fullWidth
-                                    color="primary"
-                                >
-                                    Upload NFT CSV
-                                </Button>
+                            <CSVReader
+                            cssClass="react-csv-input"
+                            label="Upload NFT csv"
+                            onFileLoaded={handleForce}
+                            parserOptions={papaparseOptions}
+                            />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -163,7 +163,7 @@ const AddProject = () => {
                 color="primary"
                 onClick={submitHandel}
             >
-                Add Project
+                Add Project NFT
             </Button>
         </Grid>
     )

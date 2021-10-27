@@ -6,7 +6,6 @@ import { Grid } from '@material-ui/core';
 import { ThemeContext } from '../../ThemeContext';
 
 const Collection = () => {
-	const state = useSelector((state) => state.auth);
 	const { 0: darkMode } = useContext(ThemeContext);
 	const dispatch = useDispatch();
 	const modalopen = (id) => {

@@ -20,11 +20,14 @@ import {
 import AddProject from "../AddProject/AddProject";
 import AddProjectNFT from "../AddProjectNFT/AddProjectNFT";
 import DialogContent from "@material-ui/core/DialogContent";
+import { useDispatch, useSelector } from 'react-redux';
 
 const TopBar = () => {
 	const [addProject, setAddProject ] = useState(false);
 	const [addProjectNFT, setAddProjectNFT]  = useState(false);
 	const [admin, setAdmin] = useState('');
+	const state = useSelector((state) => state.auth);	
+	const dispatch = useDispatch();		
 	const { 0: darkMode, 1: setDarkMode } = useContext(ThemeContext);
 	const classes = useStyles();
 	const darkchange = () => {
@@ -52,6 +55,9 @@ const logout = () => {
 useEffect(() => {
 	readCookie();
 }, [])
+const handleModal = (type, state) => {
+	dispatch({ type: type, payload: state });
+}
 	return (
 		<div className={classes.root}>
 			<AppBar className={classes.appBar} position="fixed">
@@ -93,7 +99,7 @@ useEffect(() => {
 								border="none"
 								height="25px"
 								bgcolorHover="rgb(167 18 80)"
-								onClick={()=>setAddProject(!addProject)}
+								onClick={()=>handleModal('Project Modal',true)}
 							/>
 							</Hidden>
 							<Hidden >
@@ -105,7 +111,7 @@ useEffect(() => {
 								border="none"
 								height="25px"
 								bgcolorHover="rgb(167 18 80)"
-								onClick={()=>setAddProjectNFT(!addProjectNFT)}
+								onClick={()=>handleModal('Project NFT Modal',true)}
 							/>
 							</Hidden>
 							<Hidden >
@@ -128,8 +134,8 @@ useEffect(() => {
 			<div>
                 {/* Add Project Modal */}
                 <Modal
-                    open={addProject}
-                    onClose={() => setAddProject(false)}
+                    open={state.projectModal}
+                    onClose={() => handleModal('Project Modal',false)}
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
                 >
@@ -140,8 +146,8 @@ useEffect(() => {
 
 				{/* Add Project NFT Modal */}
                 <Modal
-                    open={addProjectNFT}
-                    onClose={() => setAddProjectNFT(false)}
+                    open={state.projectNFTModal}
+                    onClose={()=>handleModal('Project NFT Modal',false)}
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
                 >

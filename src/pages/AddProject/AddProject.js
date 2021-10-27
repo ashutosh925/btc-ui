@@ -17,6 +17,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Icon from "@material-ui/core/Icon";
 import { teal, grey } from "@material-ui/core/colors";
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
 import Axios from "axios";
 
 function getModalStyle() {
@@ -50,47 +51,14 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const currencies = [
-    {
-        value: 'USD',
-        label: '$',
-    },
-    {
-        value: 'EUR',
-        label: '€',
-    },
-    {
-        value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
-    },
-]
-
 const AddProject = () => {
-    const [currency, setCurrency] = React.useState('EUR');
+  const dispatch = useDispatch();	
     const [ modalStyle ] = React.useState(getModalStyle);
     const classes = useStyles();
-    const handleChange = (event) => {
-        setCurrency(event.target.value)
-    }
     const [formData, setFormData] = useState({
       project_name:"", project_file:"" , project_logo:"" , project_owner:"",
       project_volume:"" , project_description:"" 
-       
     })
-
-
-    const [values, setValues] = React.useState({
-      shipping: "Cat in the Hat",
-      country: "",
-      city: "",
-      state: "",
-      postalCode: "",
-      address: ""
-    });
     let name , value
     const handelInputs = (e) => {
       name = e.target.name;
@@ -102,6 +70,7 @@ const AddProject = () => {
     const submiHandel = async(e) => {
       e.preventDefault();
       Axios.post("/projects" , formData)
+      dispatch({ type: 'Project Modal', payload: false });
     }
 
     return (
@@ -148,12 +117,6 @@ const AddProject = () => {
                   value={formData.project_file}
                   onChange={handelInputs}
                 />
-                {/* <Input accept="image/*" id="contained-button-file" multiple type="file" 
-                value={formData.project_file}
-                onChange={handelInputs} name="project_file" className={classes.fileUpload}/>
-                <Button variant="contained" component="span" fullWidth color="primary" >
-                  Upload Project Image
-                </Button> */}
                 </Grid>
                 <Grid item xs={6}>
                 <TextField
@@ -166,12 +129,6 @@ const AddProject = () => {
                   value={formData.project_logo}
                   onChange={handelInputs}
                 />
-                {/* <Input accept="image/*" id="contained-button-file" multiple type="file" 
-                value={formData.project_logo}
-                onChange={handelInputs} name="project_logo" className={classes.fileUpload}/>
-                <Button variant="contained" component="span" fullWidth  color="primary" >
-                  Upload Project Logo
-                </Button> */}
                 </Grid>
                 </Grid>
               </Grid>
@@ -215,9 +172,7 @@ const AddProject = () => {
                 />
                </Grid>
               </Grid>
-
                 <Button type='submit' onClick={submiHandel} color='primary' variant="contained" size="large" name="password" fullWidth >Sign in</Button>
-      
           </Grid>
          
         </Grid>

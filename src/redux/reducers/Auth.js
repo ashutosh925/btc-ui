@@ -1,5 +1,7 @@
 const initialState = {
 	modelOpen: false,
+	projectModal: false,
+	projectNFTModal: false,
 	id: 0
 };
 
@@ -11,11 +13,20 @@ const reducer = (state = initialState, action) => {
 				id: action.payload
 			};
 		case 'MODAL OPEN':
-			console.log('from reducer');
 			return {
 				...state,
 				modelOpen: action.payload
 			};
+		case 'Project Modal':
+			return {
+				...state,
+				projectModal: action.payload
+			}
+		case 'Project NFT Modal':
+			return {
+				...state,
+				projectNFTModal: action.payload
+			}
 		default:
 			return state;
 	}

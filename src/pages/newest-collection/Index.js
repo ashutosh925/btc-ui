@@ -12,8 +12,7 @@ const NewsCollections = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();	
 	const projectReducer = useSelector((state) =>  state.projectReducer);
-	const {loading , projects , error} =projectReducer;
-console.log(projects);
+	const {loading , projects , error} = projectReducer;
 
 
 	return (

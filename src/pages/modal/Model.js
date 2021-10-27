@@ -40,6 +40,7 @@ export default function SimpleModal() {
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state.auth);
 	const modalstate = state.modelOpen;
+	
 	const classes = useStyles();
 	const [ modalStyle ] = React.useState(getModalStyle);
 	const [ open, setOpen ] = React.useState(modalstate);
