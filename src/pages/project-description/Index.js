@@ -12,9 +12,12 @@ import Collection from '../project-collection/Index';
 import NewsCollections from '../newest-collection/Index';
 import TopCollection from '../topcollection/Index';
 import ModalCard from '../modal/Model';
+import {useSelector } from 'react-redux'
+
 const ProjectDescription = () => {
 	const classes = useStyles();
 	const adImg = 'https://current.images.rarity.tools/samuraidoge_horiz_d';
+	const state = useSelector((state) => state.nftReducer);
 	return (
 		<div className={`${classes.root} mid-root`}>
 			<div className={classes.imgParentDiv}>

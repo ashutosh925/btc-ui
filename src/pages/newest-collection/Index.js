@@ -29,7 +29,8 @@ const NewsCollections = () => {
 	
 	}
 	};
-	const data = JSON.parse(localStorage.getItem("userInfo")).token ;
+	const userData = JSON.parse(localStorage.getItem("userInfo"));
+	const data =  userData && userData.token;
 	// console.log(data);
 	const deleteHandel = async(id) => {
 		await	Axios.delete("project/delete", {id , token:data})
@@ -51,7 +52,7 @@ const history = useHistory()
 		<div className={classes.root}>
 			<h1 className={classes.heading}>Newest Collections Added</h1>
 			<hr />
-			<Grid container className={classes.gridParent}>
+			<Grid container={true} className={classes.gridParent}>
 
 				{projects &&
 					projects.map((card, idx) => {

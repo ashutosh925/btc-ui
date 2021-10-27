@@ -6,7 +6,7 @@ export const nftListReducer =
   ) => {
    switch(action.type){
      case GET_NFT_REQUEST:
-      return { loading: true };
+      return {...state, loading: true };
       case GET_NFT:
         return {
           ...state,
