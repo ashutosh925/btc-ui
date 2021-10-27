@@ -19,7 +19,7 @@ import { teal, grey } from "@material-ui/core/colors";
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import Axios from "axios";
-
+import { useHistory } from 'react-router';
 function getModalStyle() {
 	const top = 50;
 	const left = 50;

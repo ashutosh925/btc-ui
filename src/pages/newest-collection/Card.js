@@ -1,16 +1,29 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
+
 import Avatar from '@material-ui/core/Avatar';
 import { useStyles } from './Styles';
+import { useSelector } from 'react-redux';
 const MediaCard = (props) => {
+
+
+
 	const classes = useStyles(props);
 
+// 	const deleteHandel = () => {
+// 
+// 	}
+// 
+// 	const editHandel = () => {
+// 
+// 	}
 	return (
 		<Card className={classes.rootCard}>
 			<div className={classes.cardMedia}>
 				{/* <img src={props.img} alt="cardimge" className={classes.cardImg} /> */}
 			</div>
-
+			{/* <DeleteIcon style={{"cursor":"pointer"}} onClick={deleteHandel}/>
+			<EditIcon style={{"margin-left":"20px" , "cursor":"pointer"}}  onClick={editHandel}/> */}
 			<div className="d-flex justify-content-between mt-4 p-2">
 				<h1 className={classes.cardHeading}>{props.title}</h1>
 				<Avatar
