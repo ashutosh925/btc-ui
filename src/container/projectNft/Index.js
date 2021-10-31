@@ -6,14 +6,20 @@ import { ThemeContext } from '../../ThemeContext';
 import ProjectDescription from '../../pages/project-description/Index';
 import { listNft } from '../../redux/actions/nftactions'
 import { useDispatch, useSelector } from 'react-redux'
+import { listProject } from '../../redux/actions/projectActions'
+import cokie from 'js-cookie';
 
 const Container = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
 	const dispatch = useDispatch()
 	const state = useSelector((state) => state.nftReducer);
-	// console.log(state.currentProject.project_name);
+	const currentProject = JSON.parse(localStorage.getItem("currentProject"));
 	useEffect(() => {
-		dispatch(listNft({project_name: state.currentProject && state.currentProject.project_name}));
+		if(!state.currentProject){
+			dispatch({ type: 'CURRENT_PROJECT', payload: currentProject });
+			dispatch(listProject({}))
+		}
+		dispatch(listNft({project_id: state.currentProject ? state.currentProject._id : currentProject._id}));
 	}, []);
 	return (
 		<div>

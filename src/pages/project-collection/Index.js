@@ -8,8 +8,9 @@ import { ThemeContext } from '../../ThemeContext';
 const Collection = () => {
 	const { 0: darkMode } = useContext(ThemeContext);
 	const dispatch = useDispatch();
-	const modalopen = (id) => {
-		dispatch({ type: 'GET ID', payload: id });
+	const modalopen = (card) => {
+		dispatch({ type: 'CURRENT_NFT', payload: card });
+		dispatch({ type: 'GET ID', payload: card.id });
 		dispatch({ type: 'MODAL OPEN', payload: true });
 	};
 	const state = useSelector((state) => state.nftReducer);
@@ -26,7 +27,7 @@ const Collection = () => {
 							<div
 								key={idx}
 								onClick={() => {
-									modalopen(card.id);
+									modalopen(card);
 								}}
 							>
 								<Grid item sm={6} md={4} lg={3}>

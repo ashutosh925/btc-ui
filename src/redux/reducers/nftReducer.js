@@ -1,4 +1,4 @@
-import { CURRENT_PROJECT, GET_NFT, GET_NFT_FAILED, GET_NFT_REQUEST } from "../Types"
+import { CURRENT_PROJECT, GET_NFT, GET_NFT_FAILED, GET_NFT_REQUEST, CURRENT_NFT } from "../Types"
 
 export const nftListReducer =
  (state = {loading:true , nfts:[]},
@@ -14,8 +14,10 @@ export const nftListReducer =
         };
       case GET_NFT_FAILED:
         return { ...state, error: action.payload };
-        case CURRENT_PROJECT:
-          return {...state , currentProject:action.payload }
+      case CURRENT_PROJECT:
+        return {...state , currentProject:action.payload }
+      case CURRENT_NFT:
+        return {...state, currentNFT: action.payload}
       default:
         return state;
   }}

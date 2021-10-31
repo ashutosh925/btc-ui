@@ -27,7 +27,6 @@ const IndexSelect = () => {
 
 	const projectReducer = useSelector((state) =>  state.projectReducer);
 	const {loading , projects } =projectReducer;
-	console.log(projects);
 	return (
 		<div>
 			<FormControl className={classes.formControl} style={{ background: 'red' }}>

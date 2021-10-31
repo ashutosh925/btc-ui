@@ -40,7 +40,7 @@ const ProjectDescription = () => {
 								<h1 className={classes.adHeading}>{state.currentProject && state.currentProject.project_name}</h1>
 							</div>
 						</Grid>
-						<Grid item lg={4}>
+						{/* <Grid item lg={4}>
 							<div className="d-flex">
 								<ButtonComponent
 									description={
@@ -86,14 +86,15 @@ const ProjectDescription = () => {
 								/>
 							</div>
 						</Grid>
+				 */}
 					</Grid>
 					<hr />
 					<IndexWarning />
-					<Ranking />
+					{/* <Ranking /> */}
 					<Filter />
 					<Collection />
 					<NewsCollections />
-					<TopCollection />
+					{/* <TopCollection /> */}
 				</div>
 			</div>
 		</div>

@@ -22,8 +22,7 @@ const NewsCollections = () => {
 	const {loading , projects , error} =projectReducer;
 
 	const [admin, setAdmin] = useState('');
-	const modalState = useSelector((state) => state.auth);
-	console.log(modalState);	
+	const modalState = useSelector((state) => state.auth);	
 	const readCookie = () => {
 	
 		const user = cokie.get("user");
@@ -43,23 +42,20 @@ const NewsCollections = () => {
 	
 	}
 	const editHandel = async(project) => {
-
-		dispatch({ type:" EDIT_PROJECT_MODAL", payload: true });
+		dispatch({ type:"EDIT_PROJECT_MODAL", payload: true });
 		dispatch({type:CURRENT_PROJECT , payload:project})
-		console.log(project);
-		await	Axios.patch(`/projects/${project.id}`, {})
 		dispatch(listProject({}))
 	}
 
-	// const handleModal = (type, state) => {
-	// 	dispatch({ type: type, payload: state });
-	// }
 	useEffect(() => {
 		readCookie();
 	}, [])
 const history = useHistory()
 	const handelClick = (card) => {
 		dispatch({ type: 'CURRENT_PROJECT', payload: card });
+		localStorage.setItem("currentProject" , JSON.stringify(card));
+		// console.log(JSON.stringify(card))
+		// cokie.set('currentProject' , JSON.stringify(card))
 		history.push("/nfts")
 	}
 	return (
@@ -100,7 +96,7 @@ const history = useHistory()
 			</Grid>
 			              <Modal
                     open={modalState.editProjectModal}
-                    onClose={() => editHandel('editProjectModal',false)}
+                    onClose={() => dispatch({ type:"EDIT_PROJECT_MODAL", payload: false })}
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
                 >

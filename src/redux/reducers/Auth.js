@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-console.log(action.type);
 	switch (action.type) {
 		case 'GET ID':
 			return {
@@ -24,14 +23,12 @@ console.log(action.type);
 			return {
 				...state,
 				projectModal: action.payload
-			}
-
-			case 'EDIT_PROJECT_MODAL':
-				console.log('EDIT_PROJECT_MODAL', action);
-				return {
-					...state,
-					editProjectModal: action.payload
-				}
+			};
+		case 'EDIT_PROJECT_MODAL':
+			return {
+				...state,
+				editProjectModal: action.payload
+			};
 		case 'Project NFT Modal':
 			return {
 				...state,

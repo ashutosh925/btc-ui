@@ -17,7 +17,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import Icon from "@material-ui/core/Icon";
 import { teal, grey } from "@material-ui/core/colors";
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Axios from "axios";
 import { useHistory } from 'react-router';
 import { listProject } from "../../redux/actions/projectActions";
@@ -54,12 +54,19 @@ const useStyles = makeStyles((theme) => ({
 
 const AddProject = () => {
   const dispatch = useDispatch();	
+	const state = useSelector((state) => state.nftReducer);
     const [ modalStyle ] = React.useState(getModalStyle);
     const classes = useStyles();
-    const [formData, setFormData] = useState({
+    const currentProject = state && state.currentProject;
+    const [formData, setFormData] = useState(currentProject ? currentProject :  {
       project_name:"", project_file:"" , project_logo:"" , project_owner:"",
       project_volume:"" , project_description:"" 
     })
+    if(state && state.currentProject){
+      // setFormData({
+      //   ...state.currentProject
+      // })
+    }
     let name , value
     const handelInputs = (e) => {
       name = e.target.name;
@@ -75,6 +82,11 @@ const AddProject = () => {
       dispatch(listProject({}))
     }
 
+    const updateHandle = async()=>{
+      await	Axios.patch(`/projects/${currentProject._id}`, formData)
+      dispatch({ type:"EDIT_PROJECT_MODAL", payload: false });
+      dispatch(listProject({}))
+    }
     return (
       <>
         <Grid container style={modalStyle} className={classes.paper}>
@@ -174,8 +186,12 @@ const AddProject = () => {
                 />
                </Grid>
               </Grid>
-                <Button type='submit' onClick={submiHandel} color='primary' variant="contained" size="large" name="password" fullWidth >Sign in</Button>
-          </Grid>
+              {currentProject ? 
+              <Button type='submit' onClick={updateHandle} color='primary' variant="contained" size="large"  fullWidth >Update</Button>
+              :
+              <Button type='submit' onClick={submiHandel} color='primary' variant="contained" size="large" name="password" fullWidth >Sign in</Button>
+              }
+              </Grid>
          
         </Grid>
 

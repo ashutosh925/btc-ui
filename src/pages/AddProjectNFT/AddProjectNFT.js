@@ -23,6 +23,7 @@ import Axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { listProject } from '../../redux/actions/projectActions'
 import CSVReader from "react-csv-reader";
+import transitions from '@material-ui/core/styles/transitions'
 
 function getModalStyle() {
     const top = 50
@@ -63,7 +64,7 @@ const AddProject = () => {
     const classes = useStyles(); 
     const dispatch = useDispatch();	
     const [form, setForm] = React.useState({
-        'project_name': '',
+        'project_id': '',
         'project_nft': '',
     })
     
@@ -79,15 +80,24 @@ const AddProject = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
+        console.log({[name]:value})
         setForm({
             ...form, [name]:value
         })
     }
 
-    const handleForce = (data, fileInfo) => setForm({
+    
+    const handleForce = (data, fileInfo) => {
+        
+        data.map(item=>{
+           item.traits = []
+            Object.keys(item).forEach((element) => element.search('trait') > -1 ? item.traits.push(JSON.stringify(item[element])): '');
+        })
+        setForm({
         ...form,
         'project_nft':data
-    });
+    })
+};
 
     const papaparseOptions = {
     header: true,
@@ -125,17 +135,18 @@ const AddProject = () => {
                             <InputLabel id="demo-simple-select-label">
                                 Project Name
                             </InputLabel>
+                            {console.log(form.project_id)}
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={form.project_name}
+                                value={form.project_id}
                                 label="Project Name"
                                 onChange={handleChange}
-                                name="project_name"
+                                name="project_id"
                             >
                               {
                                   projects && projects.map(project=>(
-                                  <MenuItem value={project.project_name} key={project.project_id}>{project.project_name}</MenuItem>
+                                  <MenuItem value={project._id} key={project.project_id}>{project.project_name}</MenuItem>
                                   ))
                               }
                             </Select>

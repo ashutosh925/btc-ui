@@ -9,40 +9,42 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './Styles';
 const MediaCard = (props) => {
 	const classes = useStyles();
-	const state = useSelector((state) => state.auth);
-	const seprateObject = filterObject.filter((items) => {
-		return items.id === state.id;
-	});
-	console.log(seprateObject[0].bottomTitle);
+	const state = useSelector((state) => state.nftReducer);
+
+	// const seprateObject = filterObject.filter((items) => {
+	// 	return items.id === 11;
+	// });
+	const seprateObject = state.currentNFT;
+	console.log(state.currentNFT,seprateObject)
 	return (
 		<Card className={classes.rootCard}>
 			<div className="d-flex justify-content-between">
-				<p className={classes.cardId}>Rarity Rank #1</p>
-				<p>
+				<p className={classes.cardId}>Rarity Rank #{seprateObject.rank1__by_one_formula}</p>
+				{/* <p>
 					<a className={classes.cardtop}>
-						Owner: <br /> {seprateObject[0].title}
+						Owner: <br /> {seprateObject.owner}
 					</a>
-				</p>
+				</p> */}
 			</div>
 			<CardActionArea>
-				<img src={seprateObject[0].img} alt="cardimge" className={classes.cardImg} />
+				<img src={seprateObject.image} alt="cardimge" className={classes.cardImg} />
 			</CardActionArea>
 			<div className="d-flex justify-content-between">
 				<div className="d-flex flex-column">
-					<span className={classes.cardId}>{seprateObject[0].bottomTitle}</span>
+					<span className={classes.cardId}>{seprateObject.name_of_nft}</span>
 					<span className={classes.cardId}>#12345</span>
 				</div>
 				<div className="d-flex flex-column">
 					<span className="text-muted">ID</span>
-					<span className="text-muted">{seprateObject[0].id}</span>
+					<span className="text-muted">{seprateObject.id}</span>
 				</div>
 			</div>
-			<div className="d-flex justify-content-center">
+			{/* <div className="d-flex justify-content-center">
 				<button className={classes.modalButton}>
 					<img src={darktheme} alt="starticon" style={{ width: '25px', height: '25px' }} />
 					<span className={`${classes.buttnoText} ms-2`}>View on space</span>
 				</button>
-			</div>
+			</div> */}
 		</Card>
 	);
 };

@@ -9,7 +9,7 @@ export const listNft = (project) =>
       const data  = await Axios.get(
         `/project_nft/getNFT`,{
           headers:{
-            project_name:project && project.project_name
+            project_id:project && project.project_id
           }
         }
       );

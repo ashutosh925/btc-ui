@@ -65,30 +65,25 @@ const handleModal = (type, state) => {
 					<Grid item sm={3} lg={2}>
 						<div className="d-flex w-100 align-items-center justify-content-evenly">
 							<ButtonComponent
-								description={<span className={classes.buttonText}>raritry.tools</span>}
+								description={<span className={classes.buttonText}>BTC.tools</span>}
 								borderRadius="8px"
 								padding="0px 10px"
 								bgColor="#BE185D"
 								border="none"
 								height="25px"
 								bgcolorHover="rgb(167 18 80)"
+								onClick={()=>history.goBack("/")}
 							/>
-							<a href="https://www.twitter.com" target="_blank">
-								<img src={twitter} alt="twitter" className={classes.socialTwitter} />
-							</a>
-
-							<a href="https://www.medium.com" target="_blank">
-								<img src={medium} alt="twitter" className={classes.socialMedium} />
-							</a>
-							<a href="https://rarity.tools/" target="_blank" className={classes.ahrefLinks}>
+							
+							<a href="/"  className={classes.ahrefLinks}>
 								<span className="w-100">Home</span>
 							</a>
 						</div>
 					</Grid>
-					<Grid sm={7} lg={6}>
+					{/* <Grid sm={7} lg={6}>
 						<Avatars />
-					</Grid>
-					<Grid sm={4} lg={4} >
+					</Grid> */}
+					<Grid sm={9} lg={10} >
 					{ admin?<div className="d-flex justify-content-end">
 							<Hidden>
 							<ButtonComponent

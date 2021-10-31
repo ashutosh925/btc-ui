@@ -90,7 +90,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	nestListItem: {
 		display: 'flex',
 		justifyContent: 'between',
-		background: '#9CA3AF ',
+		// background: '#9CA3AF ',
 		alignItems: 'center',
 		borderRadius: '5px',
 		height: '25px',
