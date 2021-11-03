@@ -19,9 +19,9 @@ const Filter = () => {
 				<Grid item lg={3}>
 					<p className={classes.sortingTitle}>10,000 Total Primate Social Society Official</p>
 				</Grid>
-				<Grid item lg={1}>
+				{/* <Grid item lg={1}>
 					<p className={classes.sortingTitle}>Price Floor: 0.05 ETH</p>
-				</Grid>
+				</Grid> */}
 				<Grid item={1}>
 					<p className={classes.sortingTitle}>Sort by</p>
 				</Grid>
@@ -32,7 +32,7 @@ const Filter = () => {
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item lg={2}>
+				{/* <Grid item lg={2}>
 					<div className="d-flex">
 						<ButtonComponent
 							description={<span>IDs</span>}
@@ -44,6 +44,7 @@ const Filter = () => {
 							borderRadius="7px"
 							// bgColor={darkMode ? '#6B7280' : 'transparent'}
 							bgcolorHover="rgb(241 239 240)"
+							onClick={()=>console.log('sorting')}
 						/>
 						<ButtonComponent
 							description={<img src={imgicon} alt="btnicon" style={{ width: '15px', height: '15px' }} />}
@@ -55,18 +56,20 @@ const Filter = () => {
 							borderRadius="7px"
 							// bgColor={darkMode ? '#6B7280' : 'transparent'}
 							bgcolorHover="rgb(241 239 240)"
+							onClick={()=>console.log('sorting')}
 						/>
 					</div>
-				</Grid>
+				</Grid> */}
 
 				<Grid item lg={3}>
 					<div className="d-flex">
 						<p className={classes.sortingTitle}>Page</p>
 						<InputComponent
-							placeHolder={1}
+							placeHolder={'1'}
 							width="30%"
 							bgColor={darkMode ? '#374151' : 'white'}
 							pColor="#EC407A"
+							value=""
 						/>
 						<p className={classes.sortingTitle}>of 209</p>
 						<div>
@@ -80,6 +83,7 @@ const Filter = () => {
 								borderRadius="7px"
 								bgColor={darkMode ? '#6B7280' : '#BE185D'}
 								bgcolorHover="rgb(167 18 80)"
+								onClick={()=>console.log('Page')}
 							/>
 						</div>
 					</div>

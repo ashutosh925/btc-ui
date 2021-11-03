@@ -6,7 +6,6 @@ const ModelRightFIlter = (props) => {
 	const classes = useStyles();
 	let progress = props.headNum.substr(0, props.headNum.lastIndexOf("%")).trim(" ");
 	let gradiant = "linear-gradient(to right, #9CA4AF "+progress+"%,yellow "+(100-progress)+"%)";
-	{console.log({progress,gradiant})}
 	return (
 		<div>
 			<div className="d-flex justify-content-between">

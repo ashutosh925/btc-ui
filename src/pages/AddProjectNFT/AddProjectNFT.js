@@ -135,7 +135,6 @@ const AddProject = () => {
                             <InputLabel id="demo-simple-select-label">
                                 Project Name
                             </InputLabel>
-                            {console.log(form.project_id)}
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"

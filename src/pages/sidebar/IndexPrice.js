@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useStyles } from './Styles';
 import InputComponent from '../../components/Input';
 import ButtonComponent from '../../components/Button';
@@ -6,6 +6,8 @@ import { ThemeContext } from '../../ThemeContext';
 
 const Price = (props) => {
 	const { 0: darkMode } = useContext(ThemeContext);
+	const [inputFirst,setInputFirst] = useState(null)
+	const [inputSecond, setInputSecond] = useState(null)
 
 	const classes = useStyles();
 	return (
@@ -17,12 +19,16 @@ const Price = (props) => {
 					placeHolder={props.inputPlaceHolderFirst}
 					pColor="#EC407A"
 					bgColor={darkMode ? '#374151' : 'white'}
+					value={inputFirst}
+					onChange={(value)=>setInputFirst(value)}
 				/>
 				<span style={{ fontSize: '20px' }}>-</span>
 				<InputComponent
 					placeHolder={props.inputPlaceHolderSecond}
 					pColor="#EC407A"
 					bgColor={darkMode ? '#374151' : 'white'}
+					value={inputSecond}
+					onChange={(value)=>setInputSecond(value)}
 				/>
 			</div>
 			<ButtonComponent
@@ -36,6 +42,7 @@ const Price = (props) => {
 				margin="2px auto 20px auto"
 				width="80%"
 				bgcolorHover="rgb(167 18 80)"
+				onClick={()=>props.handlePrice(inputFirst,inputSecond)}
 			/>
 		</div>
 	);

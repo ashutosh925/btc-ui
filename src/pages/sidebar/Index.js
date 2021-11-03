@@ -8,8 +8,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeContext } from '../../ThemeContext';
 import Hidden from '@material-ui/core/Hidden';
 import { HideContentMd } from './HideContentMd';
+import { useDispatch, useSelector } from 'react-redux';
+import { filter } from 'lodash';
+
 const Sidebar = (props) => {
+	const dispatch = useDispatch();
+	const nftReducer = useSelector((state) =>  state.nftReducer);
 	const [ showFilters, setFilters ] = useState(false);
+	const [LookUpMessage, setLookUpMessage] = useState(null);
+	const [id, setId] = useState("");
 	const { 0: darkMode } = useContext(ThemeContext);
 	const classes = useStyles(props);
 	const themeLight = createTheme({
@@ -23,7 +30,18 @@ const Sidebar = (props) => {
 		setFilters(!showFilters);
 
 	};
-
+	const modalopen = (id) => {
+        const nfts = nftReducer.nfts[0].project_nft
+		const currentNFT = nfts.find((element) => element.id === parseInt(id));
+		const setLookUpMessage = "NFT not found with enterd ID";
+		if(currentNFT){
+			dispatch({
+				type: 'CURRENT_NFT',
+				payload: currentNFT,
+			})
+			dispatch({ type: 'MODAL OPEN', payload: true })
+		} 
+    }
 	return (
 		<ThemeProvider theme={themeLight}>
 			<CssBaseline>
@@ -37,7 +55,9 @@ const Sidebar = (props) => {
 							width="46%"
 							bgColor={darkMode ? '#374151' : 'white'}
 							// pColor="#EC407A"
+							value={id}
 							valueColor={darkMode ? '#D1D5DB' : 'black'}
+							onChange={(value)=>setId(value)}
 						/>
 						<ButtonComponent
 							description="Look up"
@@ -49,8 +69,11 @@ const Sidebar = (props) => {
 							border="none"
 							height="27px"
 							bgcolorHover="rgb(167 18 80)"
+							onClick={()=>{modalopen(id)}}
 						/>
+						{LookUpMessage && <p>{LookUpMessage}</p>}
 					</div>
+
 					<Hidden only={[ 'xs', 'sm', 'md' ]}>
 						<HideContentMd />
 					</Hidden>
@@ -67,6 +90,7 @@ const Sidebar = (props) => {
 								border="none"
 								height="27px"
 								bgcolorHover="rgb(167 18 80)"
+								onClick={()=>console.log('Normalization')}
 							/>
 						</div>
 					</Hidden>

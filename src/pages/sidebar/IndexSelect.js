@@ -27,18 +27,17 @@ const IndexSelect = () => {
 
 	const projectReducer = useSelector((state) =>  state.projectReducer);
 	const {loading , projects } =projectReducer;
+	const currentProject = JSON.parse(localStorage.getItem("currentProject"));
 	return (
 		<div>
 			<FormControl className={classes.formControl} style={{ background: 'red' }}>
-				<Select className={classes.SelectInput} style={{ background: darkMode ? '#374151' : 'white' }}>
+				<Select className={classes.SelectInput} label="Project" style={{ background: darkMode ? '#374151' : 'white' }} value={currentProject.project_name}>
 					{projects &&
 						projects.map((items, idx) => {
 							return (
-								<div key={idx}>
-									<MenuItem value={items.project_name}>
+									<MenuItem key={idx} value={items.project_name}>
 										<span style={{ color: darkMode ? '#9CA3AF' : 'black' }}>{items.project_name}</span>
 									</MenuItem>
-								</div>
 							);
 						})}
 				</Select>

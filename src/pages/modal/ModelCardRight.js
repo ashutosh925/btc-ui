@@ -114,7 +114,6 @@ const ModelCardRight = () => {
 						const content = String(contents).split(",");
 						return (
 							<div key={idx}>
-								{console.log(content)}
 								<ModelRightFIlter titleHead={content[0]} titleValue={content[1]} headNum={content[2]} />
 							</div>
 						);

@@ -15,7 +15,6 @@ const MediaCard = (props) => {
 	// 	return items.id === 11;
 	// });
 	const seprateObject = state.currentNFT;
-	console.log(state.currentNFT,seprateObject)
 	return (
 		<Card className={classes.rootCard}>
 			<div className="d-flex justify-content-between">

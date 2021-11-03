@@ -59,6 +59,7 @@ const SettingsButtons = () => {
 											borderRadius="7px"
 											bgColor={btns.bgcolor}
 											bgcolorHover={btns.bgcolorHover}
+											onClick={()=>console.log('Method')}
 										/>
 									</div>
 								);
@@ -78,6 +79,7 @@ const SettingsButtons = () => {
 							border="none"
 							height="26px"
 							bgcolorHover="rgb(167 18 80)"
+							onClick={()=>console.log('Normalization')}
 						/>
 						<div className="ms-1">
 							<ButtonComponent
@@ -90,6 +92,7 @@ const SettingsButtons = () => {
 								border="1px solid #BE185D "
 								height="26px"
 								bgcolorHover={darkMode ? '#6B7280' : 'rgb(241 239 240)'}
+								onClick={()=>console.log('Normalization')}
 							/>
 						</div>
 					</div>
@@ -106,6 +109,7 @@ const SettingsButtons = () => {
 							border="none"
 							height="26px"
 							bgcolorHover="rgb(167 18 80)"
+							onClick={()=>console.log('Normalization')}
 						/>
 						<div className="ms-1">
 							<ButtonComponent
@@ -117,6 +121,7 @@ const SettingsButtons = () => {
 								border="1px solid #BE185D "
 								height="26px"
 								bgcolorHover={darkMode ? '#6B7280' : 'rgb(241 239 240)'}
+								onClick={()=>console.log('Normalization')}
 							/>
 						</div>
 					</div>

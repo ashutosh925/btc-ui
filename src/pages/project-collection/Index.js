@@ -17,7 +17,6 @@ const Collection = () => {
 	const {loading, nfts} = state
 	const [data] = nfts
 
-
 	return (
 		<div>
 			<Grid container>

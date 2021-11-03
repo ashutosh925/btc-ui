@@ -8,7 +8,8 @@ import Hidden from '@material-ui/core/Hidden';
 import Avatars from './TopbarAvatars';
 import cookie from 'js-cookie';
 // import { useHistory } from 'react-router'
-import createHistory from 'history/createBrowserHistory'
+// import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory as createHistory } from "history";
 import darkTheme from '../../assets/darktheme.svg';
 import { ThemeContext } from '../../ThemeContext';
 import {
@@ -62,7 +63,7 @@ const handleModal = (type, state) => {
 		<div className={classes.root}>
 			<AppBar className={classes.appBar} position="fixed">
 				<Grid container className={classes.gridParent} alignItems="center">
-					<Grid item sm={3} lg={2}>
+					<Grid item sm={3} > 
 						<div className="d-flex w-100 align-items-center justify-content-evenly">
 							<ButtonComponent
 								description={<span className={classes.buttonText}>BTC.tools</span>}
@@ -83,7 +84,7 @@ const handleModal = (type, state) => {
 					{/* <Grid sm={7} lg={6}>
 						<Avatars />
 					</Grid> */}
-					<Grid sm={9} lg={10} >
+					<Grid  item sm={9} lg={10} >
 					{ admin?<div className="d-flex justify-content-end">
 							<Hidden>
 							<ButtonComponent

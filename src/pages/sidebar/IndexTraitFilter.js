@@ -27,6 +27,7 @@ const IndexTraitFilter = (props) => {
 					margin="0px 5px"
 					width="95%"
 					bgcolorHover="rgb(167 18 80)"
+					onClick={()=>console.log('Normalization')}
 				/>
 				<ButtonComponent
 					description="Expand All"
@@ -39,6 +40,7 @@ const IndexTraitFilter = (props) => {
 					borderRadius="8px"
 					margin="0px 5px"
 					bgcolorHover="rgb(167 18 80)"
+					onClick={()=>console.log('Normalization')}
 				/>
 			</div>
 		</div>

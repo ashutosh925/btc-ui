@@ -34,6 +34,7 @@ const Ranking = () => {
 				border="none"
 				height="26px"
 				bgcolorHover="rgb(167 18 80)"
+				onClick={()=>console.log('Ranking')}
 			/>
 			<div className="d-flex mt-3">
 				<Button disableRipple elevation={0} onClick={settingsBtnShow} className={classes.toggleButtons}>
