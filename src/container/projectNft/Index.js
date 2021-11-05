@@ -21,6 +21,7 @@ const Container = () => {
 		}
 		dispatch(listNft({project_id: state.currentProject ? state.currentProject._id : currentProject._id}));
 	}, []);
+	
 	return (
 		<div>
 			<TopBar />

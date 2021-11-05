@@ -10,6 +10,14 @@ export const useStyles = makeStyles((theme, props) => ({
 		height: '27px',
 		padding: '5px',
 		margin: '2px 0px'
+	},selectedListItem: {
+		display: 'flex',
+		justifyContent: 'between',
+		background: '#BE1A5D ',
+		borderRadius: '5px',
+		height: '27px',
+		padding: '5px',
+		margin: '2px 0px'
 	},
 	nestedChild1: {
 		height: '23px',

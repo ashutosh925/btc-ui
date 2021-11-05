@@ -189,7 +189,7 @@ const AddProject = () => {
               {currentProject ? 
               <Button type='submit' onClick={updateHandle} color='primary' variant="contained" size="large"  fullWidth >Update</Button>
               :
-              <Button type='submit' onClick={submiHandel} color='primary' variant="contained" size="large" name="password" fullWidth >Sign in</Button>
+              <Button type='submit' onClick={submiHandel} color='primary' variant="contained" size="large" name="password" fullWidth >Add Project</Button>
               }
               </Grid>
          

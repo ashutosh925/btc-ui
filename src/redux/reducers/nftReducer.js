@@ -5,6 +5,8 @@ import {
     GET_NFT_REQUEST,
     CURRENT_NFT,
     GET_NFT_BY_RARITY,
+    SET_TRAIT,
+    SELECTED_NFT,
 } from '../Types'
 
 export const nftListReducer = (state = { loading: true, nfts: [] }, action) => {
@@ -28,6 +30,10 @@ export const nftListReducer = (state = { loading: true, nfts: [] }, action) => {
             }else{
                 return { ...state, nfts: [] }
             }
+        case SET_TRAIT: 
+            return {...state, selectedTrait: action.payload}
+        case SELECTED_NFT:
+            return {...state, nfts: action.payload}
         default:
             return state
     }

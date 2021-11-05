@@ -10,14 +10,19 @@ import NestedItems from './nesteditems/NestedTraits';
 import Axios from 'axios';
 const Traits = (props) => {
 	const [ nestListShow, setNestListHow ] = useState(false);
+	const [nestedLists, setNestedLists] = useState(null);
 	const classes = useStyles();
+	const dispatch = useDispatch()
+	const state = useSelector((state) => state.nftReducer);
+	const nestestlistShow = (type) => {
+		setNestListHow(!nestListShow);
+		let filterList = props.listITems.filter(element => 
+			element.type === type
+		)
+		setNestedLists(filterList)
+	}
 
-	const nestestlistShow = useCallback(
-		() => {
-			setNestListHow(!nestListShow);
-		},
-		[ nestListShow ]
-	);
+
 	return (
 		<div>
 			<List disablePadding={true} className={classes.listParent}>
@@ -31,15 +36,15 @@ const Traits = (props) => {
 				>
 					<ListItemIcon>
 						{nestListShow ? (
-							<span style={{ color: props.color, marginTop: '3px' }} onClick={nestestlistShow}>▽</span>
+							<span style={{ color: props.color, marginTop: '3px' }} onClick={()=>nestestlistShow(props.heading)}>▽</span>
 						) : (
-							<span style={{ color: props.color }} onClick={nestestlistShow}>▷</span>
+							<span style={{ color: props.color }} onClick={()=>nestestlistShow(props.heading)}>▷</span>
 						)}
 					</ListItemIcon>
-					<ListItemText button primary={props.heading} onClick={nestestlistShow} />
+					<ListItemText button primary={props.heading} onClick={()=>nestestlistShow(props.heading)} />
 				</ListItem>
 			</List>
-			{nestListShow ? <NestedItems listITems={props.listITems} /> : null}
+			{nestListShow ? <NestedItems listITems={nestedLists} selectedTrait={(trait)=>props.selectedTrait(trait)}/> : null}
 		</div>
 	);
 };
